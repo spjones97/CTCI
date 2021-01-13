@@ -7,8 +7,8 @@ public class Main {
     public static void main(String[] args) {
         String unique = "abcdefghijklmnopqrstuvwxyz";
         String notUnique = "abcdefghijklmnopqrstuvwxyzz";
-        System.out.println(isUnique(unique));
-        System.out.println(isUnique(notUnique));
+        System.out.println(isUnique(unique) ? "correct" : "error");
+        System.out.println(isUnique(notUnique) ? "error" : "correct");
     }
 
     /*
