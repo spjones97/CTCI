@@ -9,6 +9,9 @@ public class Main {
         String notUnique = "abcdefghijklmnopqrstuvwxyzz";
         System.out.println(isUnique(unique) ? "correct" : "error");
         System.out.println(isUnique(notUnique) ? "error" : "correct");
+
+        String[] perms = { "abcdefg", "bcefdag" };
+        System.out.println(checkPermutation(perms[0], perms[1]) ? "correct" : "error");
     }
 
     /*
@@ -32,6 +35,35 @@ public class Main {
                 return false;
             }
         }
+        return true;
+    }
+
+    /*
+    Check Permutation:
+    Given two strings, write a method to decide if one is a permutation of the other
+     */
+    public static boolean checkPermutation(String strOne, String strTwo) {
+        if (strOne.length() != strTwo.length()) {
+            return false;
+        }
+
+        char[] arr = strOne.toCharArray();
+
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = 0; j < strTwo.length(); j++) {
+                if (arr[i] == strTwo.charAt(j)) {
+                    arr[i] = '0';
+                    break;
+                }
+            }
+        }
+
+        for (char c : arr) {
+            if (c != '0') {
+                return false;
+            }
+        }
+
         return true;
     }
 }
