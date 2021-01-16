@@ -5,13 +5,17 @@ import java.util.*;
 public class Main {
 
     public static void main(String[] args) {
-        String unique = "abcdefghijklmnopqrstuvwxyz";
-        String notUnique = "abcdefghijklmnopqrstuvwxyzz";
-        System.out.println(isUnique(unique) ? "correct" : "error");
-        System.out.println(isUnique(notUnique) ? "error" : "correct");
+        String[] uniques = { "abcdefghijklmnopqrstuvwxyz", "abcdefghijklmnopqrstuvwxyzz" };
+        System.out.println(isUnique(uniques[0]) ? "correct" : "error");
+        System.out.println(isUnique(uniques[1]) ? "error" : "correct");
 
-        String[] perms = { "abcdefg", "bcefdag" };
+        String[] perms = { "abcdefg", "bcefdag", "abc", "def" };
         System.out.println(checkPermutation(perms[0], perms[1]) ? "correct" : "error");
+        System.out.println(checkPermutation(perms[2], perms[3]) ? "error" : "correct");
+
+        String[] urls = { "Mr John Smith   ", "Hello world my name is" };
+        System.out.println((URLify(urls[0], 13).equals("Mr%20John%20Smith")) ? "correct" : "error");
+        System.out.println((URLify(urls[1], 22).equals("Hello%20world%20my%20name%20is")) ? "correct" : "error");
     }
 
     /*
@@ -65,5 +69,26 @@ public class Main {
         }
 
         return true;
+    }
+
+    /*
+    URLify:
+    Write a method to replace all spaces in a string with '%20'.
+    You may assume that the string has sufficient space at the end to hold the additional characters,
+    and that you are given the "true" length of the string.
+     */
+    public static String URLify(String str, int length) {
+        char[] arr = str.toCharArray();
+        StringBuilder out = new StringBuilder();
+
+        for (int i = 0; i < length; i++) {
+            if (str.charAt(i) == ' ') {
+                out.append("%20");
+            } else {
+                out.append(arr[i]);
+            }
+        }
+
+        return out.toString();
     }
 }
